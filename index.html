@@ -30,68 +30,68 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 10px;
         }
         
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: var(--light-text);
             text-align: center;
-            padding: 2rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
             box-shadow: var(--shadow);
         }
         
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
         }
         
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 1rem;
             opacity: 0.9;
         }
         
         .card {
             background-color: white;
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
+            border-radius: 5px;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
             box-shadow: var(--shadow);
         }
         
         .card-title {
             color: var(--primary-color);
             border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+            padding-bottom: 0.3rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         
         .verse {
-            margin-bottom: 1.5rem;
-            padding: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.6rem;
             background-color: var(--accent-color);
-            border-radius: 8px;
-            border-right: 4px solid var(--secondary-color);
+            border-radius: 3px;
+            border-right: 3px solid var(--secondary-color);
         }
         
         .arabic {
             font-family: 'Traditional Arabic', 'Scheherazade New', serif;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             text-align: right;
-            line-height: 2.5;
-            margin-bottom: 1rem;
+            line-height: 2.2;
+            margin-bottom: 0.6rem;
             color: #1c3c23;
         }
         
         .translation {
             font-style: italic;
-            padding: 0.5rem;
+            padding: 0.3rem;
             border-left: 2px solid var(--secondary-color);
             background-color: rgba(46, 139, 87, 0.1);
         }
@@ -99,7 +99,7 @@
         .reference {
             font-weight: bold;
             color: var(--secondary-color);
-            margin-top: 0.5rem;
+            margin-top: 0.3rem;
         }
         
         .btn {
@@ -138,12 +138,12 @@
         
         .modal-content {
             background-color: white;
-            margin: 5% auto;
-            padding: 2rem;
-            border-radius: 10px;
-            width: 90%;
+            margin: 2% auto;
+            padding: 1rem;
+            border-radius: 5px;
+            width: 95%;
             max-width: 800px;
-            max-height: 80vh;
+            max-height: 90vh;
             overflow-y: auto;
             position: relative;
         }
@@ -159,8 +159,8 @@
         
         footer {
             text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
+            padding: 1rem;
+            margin-top: 1rem;
             color: var(--primary-color);
             font-size: 0.9rem;
         }
@@ -178,16 +178,40 @@
         }
         
         @media (max-width: 768px) {
+            .container {
+                padding: 5px;
+            }
+            
             .arabic {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
+                line-height: 2;
             }
             
             h1 {
-                font-size: 2rem;
+                font-size: 1.6rem;
             }
             
             .card {
-                padding: 1rem;
+                padding: 0.5rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .verse {
+                padding: 0.4rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .modal-content {
+                width: 98%;
+                margin: 1% auto;
+                padding: 0.8rem;
+                max-height: 95vh;
+            }
+            
+            .close {
+                top: 0.5rem;
+                right: 1rem;
+                font-size: 1.8rem;
             }
         }
     </style>
