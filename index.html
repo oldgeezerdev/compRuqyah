@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complete Ruqya Verses</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             /* Light theme colors */
@@ -199,7 +202,7 @@
         
         .theme-toggle {
             position: absolute;
-            top: 1rem;
+            bottom: 1rem;
             right: 1rem;
             background: rgba(255, 255, 255, 0.2);
             border: 2px solid rgba(255, 255, 255, 0.3);
@@ -214,6 +217,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            z-index: 1000;
         }
         
         .theme-toggle:hover {
@@ -268,6 +272,77 @@
                 right: 1rem;
                 font-size: 1.8rem;
             }
+            
+            .person-selection {
+                margin-top: 1.5rem;
+                text-align: center;
+            }
+            
+            .person-title {
+                color: var(--text-color);
+                font-size: 1rem;
+                margin-bottom: 1rem;
+                font-weight: 500;
+            }
+            
+            .person-icons {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                margin-top: 1rem;
+                padding: 1rem 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .person-icon {
+                background: var(--primary-color);
+                color: var(--light-text);
+                border: 2px solid var(--primary-color);
+                border-radius: 50%;
+                width: 45px;
+                height: 45px;
+                font-size: 0.8rem;
+                font-weight: bold;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: var(--shadow);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .person-icon:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+                background: var(--primary-color);
+                color: var(--light-text);
+                border-color: var(--secondary-color);
+            }
+            
+            .person-icon:active {
+                transform: translateY(0);
+                box-shadow: var(--shadow);
+                background: var(--secondary-color);
+            }
+            
+            .personalized-verse {
+                display: none;
+                margin-top: 1rem;
+                padding: 1rem;
+                background: var(--translation-bg);
+                border-radius: 8px;
+                border-left: 4px solid var(--accent-color);
+            }
+            
+            .personalized-verse.active {
+                display: block;
+                animation: fadeIn 0.3s ease-in;
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
         }
     </style>
 </head>
@@ -306,6 +381,19 @@
                 <div class="arabic">وَإِذَا مَرِضْتُ فَهُوَ يَشْفِينِ</div>
                 <div class="translation">And when I am ill, it is He who cures me (Statement of Prophet Ibrahim AS)</div>
                 <div class="reference">Surah Ash-Shu'ara (26:80)</div>
+            </div>
+            
+            <div class="person-selection">
+                <p class="person-title">Press if you are reading Ruqyah on a male, female, or yourself:</p>
+                <div class="person-icons">
+                    <button class="person-icon" onclick="showPersonalizedVerse('him')">Him</button>
+                    <button class="person-icon" onclick="showPersonalizedVerse('her')">Her</button>
+                    <button class="person-icon" onclick="showPersonalizedVerse('me')">Me</button>
+                </div>
+            </div>
+            
+            <div id="personalized-verse" class="personalized-verse">
+                <!-- Personalized verse will be displayed here -->
             </div>
         </div>
         
@@ -631,6 +719,37 @@
             if (event.target == modal) {
                 closeModal();
             }
+        }
+        
+        // Personalized verse functionality
+        function showPersonalizedVerse(person) {
+            const verseContainer = document.getElementById('personalized-verse');
+            let arabicText = '';
+            let translationText = '';
+            
+            if (person === 'him') {
+                arabicText = 'بِاسْمِ اللَّهِ أَرْقِيكَ مِنْ كُلِّ شَىْءٍ يُؤْذِيكَ مِنْ شَرِّ كُلِّ نَفْسٍ أَوْ عَيْنِ حَاسِدٍ اللَّهُ يَشْفِيكَ بِاسْمِ اللَّهِ أَرْقِيكَ';
+                translationText = 'In the name of Allah, I perform Ruqyah on you from everything that harms you, from the evil of every soul or envious eye. May Allah heal you. In the name of Allah, I perform Ruqyah on you.';
+            } else if (person === 'her') {
+                arabicText = 'بِاسْمِ اللَّهِ أَرْقِيكِ مِنْ كُلِّ شَىْءٍ يُؤْذِيكِ مِنْ شَرِّ كُلِّ نَفْسٍ أَوْ عَيْنِ حَاسِدٍ اللَّهُ يَشْفِيكِ بِاسْمِ اللَّهِ أَرْقِيكِ';
+                translationText = 'In the name of Allah, I perform Ruqyah on you from everything that harms you, from the evil of every soul or envious eye. May Allah heal you. In the name of Allah, I perform Ruqyah on you.';
+            } else if (person === 'me') {
+                arabicText = 'بِاسْمِ اللَّهِ أَرْقِي نَفْسِي مِنْ كُلِّ شَىْءٍ يُؤْذِينِي مِنْ شَرِّ كُلِّ نَفْسٍ أَوْ عَيْنِ حَاسِدٍ اللَّهُ يَشْفِينِي بِاسْمِ اللَّهِ أَرْقِي نَفْسِي';
+                translationText = 'In the name of Allah, I perform Ruqyah on myself from everything that harms me, from the evil of every soul or envious eye. May Allah heal me. In the name of Allah, I perform Ruqyah on myself.';
+            }
+            
+            verseContainer.innerHTML = `
+                <div class="verse">
+                    <div class="arabic">${arabicText}</div>
+                    <div class="translation">${translationText}</div>
+                </div>
+            `;
+            
+            // Show the verse with animation
+            verseContainer.classList.remove('active');
+            setTimeout(() => {
+                verseContainer.classList.add('active');
+            }, 10);
         }
     </script>
     
