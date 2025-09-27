@@ -1,41 +1,45 @@
 # Complete Ruqyah Collection
 
-A comprehensive collection of Quranic verses for Ruqyah (Islamic spiritual healing) presented in a clean, readable HTML format.
-
-## Contents
-
-This collection includes essential Quranic verses commonly used in Ruqyah:
-
-- **Surah Al-Fatiha** (1:1-7) - The Opening
-- **Ayat al-Kursi** (2:255) - The Throne Verse
-- **Surah Al-Baqarah** (2:285-286) - The final verses
-- **Surah As-Saffat** (37:1-10) - Those lined up in ranks
-- **Surah Al-Fath** (48:29) - The Victory
-- **Surah Ar-Rahman** (55:33-36) - The Most Merciful
-- **Surah Al-Hashr** (59:21-24) - The Exile
-- **Surah Al-Jinn** (72:1-9) - The Jinn
-- **Surah Al-Ikhlas** (112) - The Sincerity (recite 3 times)
-- **Surah Al-Falaq** (113) - The Daybreak (recite 3 times)
-- **Surah An-Nas** (114) - Mankind (recite 3 times)
+A comprehensive, filterable collection of Quranic verses for Ruqyah (Islamic spiritual healing) presented in a clean, readable single-page app.
 
 ## Features
 
-- Arabic text with proper verse numbering
-- English translations for understanding
-- Clean, responsive HTML design
-- Easy-to-read typography
-- Proper verse references
+- Core verses always visible in the main list
+- Filters: `All`, `Prophetic`, `Manzil`
+- Targeted sections toggled by buttons: `For Sihr (Magic)`, `Healing & Protection`, `Shifa`
+- Personalized supplications: `Him`, `Her`, `Me` (dynamic Arabic and English)
+- Clear Arabic text with verse references and English translations
+- Responsive layout and easy-to-read typography
+
+## Contents Overview
+
+- Core Verses: Foundational ayat for ruqyah (e.g., Al-Fatihah, Ayat al-Kursi, last verses of Al-Baqarah, etc.)
+- Filter – Prophetic: Six commonly recited items in ruqyah (all are also part of Manzil)
+- Filter – Manzil: Full Manzil set used in daily ruqyah routines
+- Targeted – For Sihr (Magic): Verses addressing magic and its nullification
+- Targeted – Healing & Protection: Verses affirming tawhid, protection, and spiritual defense
+- Targeted – Shifa: Verses explicitly mentioning shifa’ or supplications for cure
+- Closing Adhkar & Supplications: Short dhikr and du‘a used to close a ruqyah session
+
+For the exact lists, see:
+
+- `ruqyah-verses.md` – structured, annotated reference
+- `verses.txt` – concise plaintext list (Prophetic, Manzil, and Targeted sections)
 
 ## Usage
 
-Open `completeRuqyah.html` in any web browser to view the complete collection. The verses are formatted for easy reading and recitation.
+- Open `index.html` directly in your browser; or
+- Serve the folder locally (example):
+  - `python -m http.server 8080`
+  - Visit `http://localhost:8080/`
 
 ## Recent Updates
 
-- Fixed Arabic numeral formatting errors (replaced Chinese characters with proper Arabic numerals)
-- Added Surah Ar-Rahman (55:33-36) verses
-- Improved overall formatting and presentation
+- Added targeted sections inline (Sihr, Healing & Protection, Shifa)
+- Implemented `Prophetic` and `Manzil` filters; documented exact verse sets
+- Updated documentation (`ruqyah-verses.md`, `verses.txt`, and this README)
+- Replaced old modal approach with inline sections for simplicity
 
 ---
 
-*May Allah accept this effort and make it beneficial for all Muslims seeking spiritual healing through His words.*
+May Allah accept this effort and make it beneficial for all seeking healing through His words.

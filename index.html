@@ -20,6 +20,9 @@
             --card-bg: #ffffff;
             --arabic-color: #1c3c23;
             --translation-bg: rgba(46, 139, 87, 0.1);
+            /* Filter accent colors */
+            --prophetic-color: #1e90ff; /* blue */
+            --manzil-color: #e63946;    /* red */
         }
         
         [data-theme="dark"] {
@@ -34,6 +37,9 @@
             --card-bg: #2d2d2d;
             --arabic-color: #90c695;
             --translation-bg: rgba(74, 157, 106, 0.2);
+            /* Keep dedicated filter colors consistent in dark mode */
+            --prophetic-color: #1e90ff; /* blue */
+            --manzil-color: #e63946;    /* red */
         }
         
         * {
@@ -422,6 +428,10 @@
             font-size: 0.9rem;
             transition: all 0.3s ease;
         }
+
+        /* Specific borders for Prophetic/Manzil buttons */
+        .btn-filter.btn-prophetic { border-color: var(--prophetic-color); }
+        .btn-filter.btn-manzil { border-color: var(--manzil-color); }
         
         .btn-filter:hover {
             background-color: var(--secondary-color);
@@ -434,6 +444,14 @@
             color: var(--light-text);
             border-color: var(--primary-color);
         }
+
+        /* Preserve colored borders when active */
+        .btn-filter.active.btn-prophetic { border-color: var(--prophetic-color); }
+        .btn-filter.active.btn-manzil { border-color: var(--manzil-color); }
+
+        /* Change the right-side line on verses based on active filter */
+        body.filter-prophetic #core-content .verse { border-right-color: var(--prophetic-color); }
+        body.filter-manzil #core-content .verse { border-right-color: var(--manzil-color); }
         
         .verse.hidden {
             display: none !important;
@@ -504,8 +522,8 @@
             
             <div class="filter-buttons">
                 <button class="btn btn-filter active" onclick="filterVerses('all')">All</button>
-                <button class="btn btn-filter" onclick="filterVerses('prophetic')">Prophetic</button>
-                <button class="btn btn-filter" onclick="filterVerses('manzil')">Manzil</button>
+                <button class="btn btn-filter btn-prophetic" onclick="filterVerses('prophetic')">Prophetic</button>
+                <button class="btn btn-filter btn-manzil" onclick="filterVerses('manzil')">Manzil</button>
             </div>
             
             <div id="core-content">
@@ -557,9 +575,7 @@
                     <div class="translation">Allah witnesses that there is no deity except Him, and the angels and those of knowledge also witness that He is maintaining creation in justice. There is no deity except Him, the Exalted in Might, the Wise. [18] Indeed, the religion in the sight of Allah is Islam. And those who were given the Scripture did not differ except after knowledge had come to them - out of jealous animosity between themselves. And whoever disbelieves in the verses of Allah, then indeed, Allah is swift in reckoning. [19]</div>
                     <div class="reference">Surah Al-Imran (3:18-19)</div>
                 </div>
-            </div>
-
-            <div class="card">
+                
                 <div class="verse" data-tags="manzil">
                     <div class="arabic">قُلِ اللَّهُمَّ مَالِكَ الْمُلْكِ تُؤْتِي الْمُلْكَ مَن تَشَاءُ وَتَنزِعُ الْمُلْكَ مِمَّن تَشَاءُ وَتُعِزُّ مَن تَشَاءُ وَتُذِلُّ مَن تَشَاءُ ۖ بِيَدِكَ الْخَيْرُ ۖ إِنَّكَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ ﴿٢٦﴾</div>
                     <div class="translation">Say, "O Allah, Owner of Sovereignty, You give sovereignty to whom You will and You take sovereignty away from whom You will. You honor whom You will and You humble whom You will. In Your hand is [all] good. Indeed, You are over all things competent.</div>
@@ -571,9 +587,7 @@
                     <div class="translation">You cause the night to enter the day, and You cause the day to enter the night; and You bring the living out of the dead, and You bring the dead out of the living. And You give provision to whom You will without account.</div>
                     <div class="reference">Surah Al-Imran (3:27)</div>
                 </div>
-            </div>
-
-            <div class="card">
+                
                 <div class="verse" data-tags="manzil">
                     <div class="arabic">إِنَّ رَبَّكُمُ اللَّهُ الَّذِي خَلَقَ السَّمَاوَاتِ وَالْأَرْضَ فِي سِتَّةِ أَيَّامٍ ثُمَّ اسْتَوَىٰ عَلَى الْعَرْشِ ۖ يُغْشِي اللَّيْلَ النَّهَارَ يَطْلُبُهُ حَثِيثًا وَالشَّمْسَ وَالْقَمَرَ وَالنُّجُومَ مُسَخَّرَاتٍ بِأَمْرِهِ ۗ أَلَا لَهُ الْخَلْقُ وَالْأَمْرُ ۗ تَبَارَكَ اللَّهُ رَبُّ الْعَالَمِينَ ﴿٥٤﴾ ادْعُوا رَبَّكُمْ تَضَرُّعًا وَخُفْيَةً ۚ إِنَّهُ لَا يُحِبُّ الْمُعْتَدِينَ ﴿٥٥﴾ وَلَا تُفْسِدُوا فِي الْأَرْضِ بَعْدَ إِصْلَاحِهَا وَادْعُوهُ خَوْفًا وَطَمَعًا ۚ إِنَّ رَحْمَتَ اللَّهِ قَرِيبٌ مِّنَ الْمُحْسِنِينَ ﴿٥٦﴾</div>
                     <div class="translation">Indeed, your Lord is Allah, who created the heavens and earth in six days and then established Himself above the Throne. He covers the night with the day, seeking it rapidly, and the sun and moon and stars are subjected to His command. Unquestionably, His is the creation and the command; blessed is Allah, Lord of the worlds. [54] Call upon your Lord in humility and privately; indeed, He does not like transgressors. [55] And do not cause corruption upon the earth after its reformation. And invoke Him in fear and aspiration. Indeed, the mercy of Allah is near to the doers of good. [56]</div>
@@ -970,6 +984,8 @@
                     verse.style.display = 'none';
                 });
                 clickedButton.classList.remove('active');
+                // Reset verse right-border color
+                document.body.classList.remove('filter-prophetic', 'filter-manzil');
                 console.log('Toggled off - All verses hidden');
                 return;
             }
@@ -979,10 +995,18 @@
             
             // Add active class to clicked button
             clickedButton.classList.add('active');
-            
+
             let hiddenCount = 0;
             let shownCount = 0;
-            
+
+            // Reset verse right-border color, then set according to filter
+            document.body.classList.remove('filter-prophetic', 'filter-manzil');
+            if (filter === 'prophetic') {
+                document.body.classList.add('filter-prophetic');
+            } else if (filter === 'manzil') {
+                document.body.classList.add('filter-manzil');
+            }
+
             verses.forEach(verse => {
                 const tags = verse.getAttribute('data-tags');
                 const referenceElement = verse.querySelector('.reference');

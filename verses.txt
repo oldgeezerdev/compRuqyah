@@ -58,3 +58,14 @@ Prophetic
   - Surah Al-Isra (17:82)
   - Surah Ash-Shu'ara (26:80)
   - Surah Fussilat (41:44)
+
+ Uncategorized — Not in Prophetic, Manzil, or Targeted
+ 
+  - Surah Yunus (10:79–82)  — targeted covers 10:81–82 only
+  - Surah Taha (20:65–69)   — targeted covers 20:69 only
+  - Surah Al-Fath (48:29)
+ 
+ Notes:
+ 
+ - This list includes core verses tagged as notmanzil that are not shown by the Prophetic or Manzil filters and are not exact matches in any Targeted section.
+ - Where only part of a passage appears in Targeted, the full core passage remains listed here for clarity (see Yunus 10:79–82 and Taha 20:65–69).

@@ -1,6 +1,47 @@
-# Core Verses List - Ruqyah Collection
+# Ruqyah Verses – Reference
 
-## Verses in the Core Content Section:
+This document catalogs all verses used in the app, grouped by how the UI reveals them: core content, filters, targeted sections, and closing adhkar. See also `verses.txt` for a concise, plaintext listing.
+
+## Filters
+
+### Prophetic
+
+- Surah Al-Fatihah (1:1–7)
+- Surah Al-Baqarah (2:255) — Ayat al-Kursi
+- Surah Al-Baqarah (2:285–286)
+- Surah Al-Ikhlas (112)
+- Surah Al-Falaq (113)
+- Surah An-Nas (114)
+
+Note: “Prophetic” shows the six items tagged prophetic (also included in Manzil).
+
+### Manzil
+
+- Surah Al-Fatihah (1:1–7)
+- Surah Al-Baqarah (2:1–5)
+- Surah Al-Baqarah (2:163–164)
+- Surah Al-Baqarah (2:255) — Ayat al-Kursi
+- Surah Al-Baqarah (2:256–257)
+- Surah Al-Baqarah (2:285–286)
+- Surah Al-Imran (3:18–19)
+- Surah Al-Imran (3:26)
+- Surah Al-Imran (3:27)
+- Surah Al-A’raf (7:54–56)
+- Surah Al-Isra (17:110–111)
+- Surah Al-Mu’minun (23:115–118)
+- Surah As-Saffat (37:1–10)
+- Surah Ar-Rahman (55:33–40)
+- Surah Al-Hashr (59:21–24)
+- Surah Al-Jinn (72:1–9)
+- Surah Al-Fil (105)
+- Surah Al-Kaafiroon (109)
+- Surah Al-Ikhlas (112)
+- Surah Al-Falaq (113)
+- Surah An-Nas (114)
+
+Note: “Manzil” shows every verse tagged manzil.
+
+## Verses in the Core Content Section
 
 1. Surah Al-Fatihah (1:1-7) - The Opening
 2. Surah Al-Baqarah (2:1-5) - The first verses of Surah Al-Baqrah 
@@ -26,7 +67,7 @@
 
 The core content section contains a comprehensive collection of verses covering various aspects of Islamic protection, healing, and spiritual strength, including the essential chapters for Ruqyah practice.
 
-## For Healing & Protection Modal:
+## Targeted Section: Healing & Protection
 
 **For Protection & Healing - The "Spiritual Shield" Verses**
 
@@ -47,11 +88,10 @@ The core content section contains a comprehensive collection of verses covering 
 3. Surah Al-Mu'minūn (23:115-118) - About Allah's purpose in creation (combined verses)
 4. Surah Al-Ṣaffāt (37:1-10) - The ranks of angels and protection from devils (combined verses)
 5. Surah Fuṣṣilat (41:30-36) - Angels descending upon the righteous (combined verses)
-6. Surah Fuṣṣilat (41:44) - The Quran as guidance and healing
-7. Surah Ar-Raḥmān (55:33-36) - Challenge to jinn and mankind (combined verses)
-8. Surah Al-Jinn (72:1-9) - The jinn's testimony about the Quran (combined verses)
+6. Surah Ar-Raḥmān (55:33-36) - Challenge to jinn and mankind (combined verses)
+7. Surah Al-Jinn (72:1-9) - The jinn's testimony about the Quran (combined verses)
 
-## For Shifa - General Shifā' (Healing & Relief) Modal:
+## Targeted Section: Shifa – General Shifā' (Healing & Relief)
 
 **For General Shifa (Healing & Relief) - The "Explicit Cure" Verses**
 
@@ -69,9 +109,18 @@ The core content section contains a comprehensive collection of verses covering 
 4. Surah Al-Shu'arā (26:80) - Prophet Ibrahim's statement about Allah as the Healer
 5. Surah Al-Fuṣṣilat (41:44) - The Quran as guidance and healing
 
-## For Sihr (Magic) Modal:
+## Targeted Section: For Sihr (Magic)
 
 1. Surah Al-Baqarah (2:102) - About magic and sorcery during Solomon's reign
 2. Surah Al-A'raf (7:117-122) - Moses vs. Pharaoh's magicians
 3. Surah Yunus (10:81-82) - Moses declaring magic will be exposed
 4. Surah Taha (20:69) - Moses' staff swallowing the magicians' tricks
+
+## Closing Adhkar & Supplications
+
+1. Surah As-Saffat (37:180–182) - Tasbih, Salam on the messengers, Hamd
+2. Surah Al-Imran (3:173) - Hasbunallahu wa ni‘mal wakeel
+
+## Personalized (Him / Her / Me)
+
+The Personalized buttons dynamically render supplication lines in Arabic and English for “him”, “her”, and “me” variations. These are not verse references and therefore are not listed above.
