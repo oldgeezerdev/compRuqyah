@@ -54,6 +54,8 @@
             color: var(--text-color);
             line-height: 1.6;
         }
+        /* Gentle vertical snapping across verses without forcing alignment */
+        html { scroll-snap-type: y proximity; }
         
         .container {
             max-width: 1200px;
@@ -152,6 +154,7 @@
             background-color: var(--accent-color);
             border-radius: 3px;
             border-right: 3px solid var(--secondary-color);
+            scroll-snap-align: start;
             display: none; /* Hide all verses by default */
         }
         
@@ -497,6 +500,8 @@
         /* Change the right-side line on verses based on active filter */
         body.filter-prophetic #core-content .verse { border-right-color: var(--prophetic-color); }
         body.filter-manzil #core-content .verse { border-right-color: var(--manzil-color); }
+        /* Ensure all verses participate in snap alignment */
+        .verse { scroll-snap-align: start; }
         
         .verse.hidden {
             display: none !important;
@@ -1169,6 +1174,54 @@
             
             console.log('Filter complete - Hidden:', hiddenCount, 'Shown:', shownCount);
         }
+
+        // Mobile swipe flick to advance to next/previous visible verse
+        (function setupVerseSwipe() {
+            const state = { startY: 0, startTime: 0, targetVerse: null, lastTrigger: 0 };
+            function onTouchStart(e) {
+                if (e.touches && e.touches.length > 1) return; // ignore multi-touch to avoid pinch-zoom conflicts
+                const verse = e.target.closest('.verse');
+                if (!verse) return;
+                state.startY = e.touches ? e.touches[0].clientY : e.clientY;
+                state.startTime = Date.now();
+                state.targetVerse = verse;
+            }
+            function isVisible(el) {
+                const style = window.getComputedStyle(el);
+                if (style.display === 'none' || el.classList.contains('hidden')) return false;
+                return el.offsetHeight > 0;
+            }
+            function scrollToAdjacent(direction) {
+                const all = Array.from(document.querySelectorAll('.verse'));
+                const currentIndex = all.indexOf(state.targetVerse);
+                if (currentIndex === -1) return;
+                let idx = currentIndex + (direction === 'next' ? 1 : -1);
+                while (idx >= 0 && idx < all.length) {
+                    const candidate = all[idx];
+                    if (isVisible(candidate)) {
+                        try { candidate.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {}
+                        break;
+                    }
+                    idx += (direction === 'next' ? 1 : -1);
+                }
+            }
+            function onTouchEnd(e) {
+                if (!state.targetVerse) return;
+                if (e.changedTouches && e.changedTouches.length > 1) return; // ignore multi-touch end
+                const now = Date.now();
+                if (now - state.lastTrigger < 350) { state.targetVerse = null; return; }
+                const endY = e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
+                const deltaY = endY - state.startY;
+                const duration = now - state.startTime;
+                if (duration < 250 && Math.abs(deltaY) > 60) {
+                    if (deltaY < 0) scrollToAdjacent('next'); else scrollToAdjacent('prev');
+                    state.lastTrigger = now;
+                }
+                state.targetVerse = null;
+            }
+            document.addEventListener('touchstart', onTouchStart, { passive: true });
+            document.addEventListener('touchend', onTouchEnd);
+        })();
         
         // Personalized verse functionality
         function showPersonalizedVerse(person) {
