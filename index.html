@@ -113,15 +113,16 @@
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.95rem;
-            line-height: 1;
-            margin-right: 5px; /* nudge left visually */
+            display: inline-block;
+            aspect-ratio: 1 / 1;
+            flex: 0 0 24px;
+            font-size: 0; /* prevent font scaling from distorting circle */
+            line-height: 0;
+            margin-right: 0; /* place closer to the end of the line */
         }
         /* Simple circle icon, no animation */
-        .key-steps .toggle-icon::before { content: "○"; }
+        /* Simple circle icon ring */
+        .key-steps .toggle-icon::before { content: ""; }
         /* Soften text in the Key Steps card */
         .key-steps p {
             opacity: 0.5;
@@ -140,8 +141,9 @@
             margin-bottom: 0.8rem;
             font-size: 1.3rem;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
+            gap: 5px; /* keep icon ~5px from the text */
         }
         
         #core-content .verse {
@@ -252,7 +254,7 @@
         
         .theme-toggle {
             position: absolute;
-            bottom: calc(1rem - 5px);
+            bottom: calc(1rem - 10px);
             right: 1rem;
             background: rgba(255, 255, 255, 0.2);
             border: 2px solid rgba(255, 255, 255, 0.3);
@@ -515,7 +517,7 @@
             <p class="subtitle">Based on the Qur'an and Authentic Sunnah for Spiritual Healing</p>
         </header>
         <div class="card key-steps">
-            <h2 class="card-title">Key Steps to Take Before Seeking a Spiritual Cure (Ruqyah)
+            <h2 class="card-title"><span class="title-text">Key Steps to Take Before Seeking a Spiritual Cure (Ruqyah)</span>
                 <button class="toggle-icon" onclick="toggleKeySteps()" aria-label="Hide or show Key Steps" title="Hide/Show" aria-expanded="true"></button>
             </h2>
             <div class="key-steps-body">
