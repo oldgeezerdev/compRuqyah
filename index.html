@@ -103,6 +103,25 @@
             text-align: center;
             font-style: italic;
         }
+        /* Toggle icon in card titles */
+        .card-title .toggle-icon {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            color: inherit;
+            opacity: 0.6;
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            line-height: 1;
+            margin-right: 5px; /* nudge left visually */
+        }
+        /* Simple circle icon, no animation */
+        .key-steps .toggle-icon::before { content: "○"; }
         /* Soften text in the Key Steps card */
         .key-steps p {
             opacity: 0.5;
@@ -233,7 +252,7 @@
         
         .theme-toggle {
             position: absolute;
-            bottom: 1rem;
+            bottom: calc(1rem - 5px);
             right: 1rem;
             background: rgba(255, 255, 255, 0.2);
             border: 2px solid rgba(255, 255, 255, 0.3);
@@ -496,7 +515,10 @@
             <p class="subtitle">Based on the Qur'an and Authentic Sunnah for Spiritual Healing</p>
         </header>
         <div class="card key-steps">
-            <h2 class="card-title">Key Steps to Take Before Seeking a Spiritual Cure (Ruqyah)</h2>
+            <h2 class="card-title">Key Steps to Take Before Seeking a Spiritual Cure (Ruqyah)
+                <button class="toggle-icon" onclick="toggleKeySteps()" aria-label="Hide or show Key Steps" title="Hide/Show" aria-expanded="true"></button>
+            </h2>
+            <div class="key-steps-body">
             <p class="quote">"And when My servants ask you concerning Me, indeed I am near. I respond to the call of the caller when he calls upon Me." (Surah Al-Baqarah, 2:186)</p>
             <p>&nbsp;</p>
             <h3>Correct Your Core Beliefs</h3>
@@ -551,6 +573,7 @@
                 <li>Find a clean and quiet place.</li>
                 <li>Have the sincere intention to seek healing from Allah (swt) alone.</li>
             </ul>
+            </div>
         </div>
         
         <div class="card">
@@ -1018,6 +1041,19 @@
             } else {
                 section.style.display = 'none';
             }
+        }
+
+        // Toggle Key Steps card body visibility and icon state
+        function toggleKeySteps() {
+            const card = document.querySelector('.card.key-steps');
+            if (!card) return;
+            const body = card.querySelector('.key-steps-body');
+            const btn = card.querySelector('.toggle-icon');
+            if (!body || !btn) return;
+            const isHidden = body.style.display === 'none';
+            body.style.display = isHidden ? '' : 'none';
+            card.classList.toggle('collapsed', !isHidden);
+            btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
         }
         
         // Theme toggle functionality
