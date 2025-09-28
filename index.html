@@ -54,8 +54,8 @@
             color: var(--text-color);
             line-height: 1.6;
         }
-        /* Gentle vertical snapping across verses without forcing alignment */
-        html { scroll-snap-type: y proximity; }
+        /* Mandatory vertical snapping so verses always align at the top */
+        html { scroll-snap-type: y mandatory; scroll-padding-top: 72px; }
         
         .container {
             max-width: 1200px;
@@ -500,8 +500,8 @@
         /* Change the right-side line on verses based on active filter */
         body.filter-prophetic #core-content .verse { border-right-color: var(--prophetic-color); }
         body.filter-manzil #core-content .verse { border-right-color: var(--manzil-color); }
-        /* Ensure all verses participate in snap alignment */
-        .verse { scroll-snap-align: start; }
+        /* Ensure all verses participate in snap alignment and do not skip */
+        .verse { scroll-snap-align: start; scroll-snap-stop: always; }
         
         .verse.hidden {
             display: none !important;
