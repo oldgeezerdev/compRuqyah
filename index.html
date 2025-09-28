@@ -72,6 +72,8 @@
             margin-bottom: 1rem;
             box-shadow: var(--shadow);
             position: relative;
+            /* Make header a snap point so page top is reachable */
+            scroll-snap-align: start;
         }
         
         h1 {
@@ -86,6 +88,8 @@
         
         .card {
             background-color: var(--card-bg);
+            /* Make each section card a snap point */
+            scroll-snap-align: start;
             border-radius: 5px;
             padding: 0.8rem;
             margin-bottom: 1rem;
@@ -155,6 +159,7 @@
             border-radius: 3px;
             border-right: 3px solid var(--secondary-color);
             scroll-snap-align: start;
+            scroll-snap-stop: always;
             display: none; /* Hide all verses by default */
         }
         
@@ -500,8 +505,8 @@
         /* Change the right-side line on verses based on active filter */
         body.filter-prophetic #core-content .verse { border-right-color: var(--prophetic-color); }
         body.filter-manzil #core-content .verse { border-right-color: var(--manzil-color); }
-        /* Ensure all verses participate in snap alignment and do not skip */
-        .verse { scroll-snap-align: start; scroll-snap-stop: always; }
+        /* Limit snap alignment to core Ruqya verses only */
+        /* (Other sections' verses won't snap, so page top remains reachable) */
         
         .verse.hidden {
             display: none !important;
