@@ -152,6 +152,15 @@
             gap: 5px; /* keep icon ~5px from the text */
         }
         
+        .key-steps .card-title {
+            transition: all 0.3s ease;
+        }
+        
+        .key-steps .card-title:hover {
+            color: var(--secondary-color);
+            transform: translateY(-1px);
+        }
+        
         #core-content .verse {
             margin-bottom: 1rem;
             padding: 0.6rem;
@@ -527,9 +536,7 @@
             <p class="subtitle">Based on the Qur'an and Authentic Sunnah for Spiritual Healing</p>
         </header>
         <div class="card key-steps">
-            <h2 class="card-title"><span class="title-text">Key Steps to Take Before Seeking a Spiritual Cure (Ruqyah)</span>
-                <button class="toggle-icon" onclick="toggleKeySteps()" aria-label="Hide or show Key Steps" title="Hide/Show" aria-expanded="true"></button>
-            </h2>
+            <h2 class="card-title" onclick="toggleKeySteps()" style="cursor: pointer;" aria-label="Click to hide or show Key Steps" title="Click to Hide/Show" aria-expanded="true">Key Steps to Take Before Seeking a Spiritual Cure (Ruqyah)</h2>
             <div class="key-steps-body">
             <p class="quote">"And when My servants ask you concerning Me, indeed I am near. I respond to the call of the caller when he calls upon Me." (Surah Al-Baqarah, 2:186)</p>
             <p>&nbsp;</p>
@@ -1060,12 +1067,12 @@
             const card = document.querySelector('.card.key-steps');
             if (!card) return;
             const body = card.querySelector('.key-steps-body');
-            const btn = card.querySelector('.toggle-icon');
-            if (!body || !btn) return;
+            const title = card.querySelector('.card-title');
+            if (!body || !title) return;
             const isHidden = body.style.display === 'none';
             body.style.display = isHidden ? '' : 'none';
             card.classList.toggle('collapsed', !isHidden);
-            btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+            title.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
         }
         
         // Theme toggle functionality
@@ -1087,6 +1094,8 @@
         // (Modal removed) No global click handlers needed
         
         // Filter verses functionality
+        let filterInitialized = false; // Track if any filter has been applied
+        
         function filterVerses(filter) {
             console.log('=== Filter called with:', filter, '===');
             
@@ -1106,7 +1115,8 @@
             });
             
             // Check if the clicked button is already active (toggle functionality)
-            if (clickedButton.classList.contains('active')) {
+            // But only allow toggle-off if the filter has been initialized (not on first load)
+            if (clickedButton.classList.contains('active') && filterInitialized) {
                 // Hide all verses and remove active state
                 verses.forEach(verse => {
                     verse.classList.add('hidden');
@@ -1116,8 +1126,12 @@
                 // Reset verse right-border color
                 document.body.classList.remove('filter-prophetic', 'filter-manzil');
                 console.log('Toggled off - All verses hidden');
+                filterInitialized = false; // Reset initialization flag
                 return;
             }
+            
+            // Mark that filter has been initialized
+            filterInitialized = true;
             
             // Remove active class from all buttons
             filterButtons.forEach(btn => btn.classList.remove('active'));
