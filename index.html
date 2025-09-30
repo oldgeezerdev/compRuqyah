@@ -54,8 +54,8 @@
             color: var(--text-color);
             line-height: 1.6;
         }
-        /* Mandatory vertical snapping so verses always align at the top */
-        html { scroll-snap-type: y mandatory; scroll-padding-top: 72px; }
+        /* Disable scroll snapping */
+        html { scroll-snap-type: none; scroll-padding-top: 0; }
         
         .container {
             max-width: 1200px;
@@ -72,8 +72,6 @@
             margin-bottom: 1rem;
             box-shadow: var(--shadow);
             position: relative;
-            /* Make header a snap point so page top is reachable */
-            scroll-snap-align: start;
         }
         
         h1 {
@@ -88,8 +86,6 @@
         
         .card {
             background-color: var(--card-bg);
-            /* Make each section card a snap point */
-            scroll-snap-align: start;
             border-radius: 5px;
             padding: 0.8rem;
             margin-bottom: 1rem;
@@ -167,8 +163,6 @@
             background-color: var(--accent-color);
             border-radius: 3px;
             border-right: 3px solid var(--secondary-color);
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
             display: none; /* Hide all verses by default */
         }
         
@@ -187,6 +181,9 @@
             border-left: 2px solid var(--secondary-color);
             background-color: var(--translation-bg);
         }
+        
+        /* Hide translations within Core Content when toggle is off */
+        #core-content.translations-off .translation { display: none; }
         
         .reference {
             font-weight: bold;
@@ -640,7 +637,8 @@
         
         <div class="card">
             <h2 class="card-title">
-                Core Ruqya Verses
+                <span>Core Ruqya Verses</span>
+                <button id="toggle-core-translations" class="btn btn-small" onclick="toggleCoreTranslations()" aria-pressed="false" title="Show translations for Core Ruqya verses" style="margin-left:auto">Show Translation</button>
             </h2>
             
             <div class="filter-buttons">
@@ -649,7 +647,7 @@
                 <button class="btn btn-filter btn-manzil" onclick="filterVerses('manzil')">Manzil</button>
             </div>
             
-            <div id="core-content">
+            <div id="core-content" class="translations-off">
                 <div class="verse" data-tags="prophetic,manzil">
                     <div class="reference">Surah Al-Fatihah (1:1-7)</div>
                     <div class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ﴿١﴾ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿٢﴾ الرَّحْمَٰنِ الرَّحِيمِ ﴿٣﴾ مَالِكِ يَوْمِ الدِّينِ ﴿٤﴾ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ﴿٥﴾ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ﴿٦﴾ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ﴿٧﴾</div>
@@ -1083,6 +1081,18 @@
             
             body.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
+        }
+        
+        // Toggle Core Ruqya translations (default off)
+        function toggleCoreTranslations() {
+            const core = document.getElementById('core-content');
+            const btn = document.getElementById('toggle-core-translations');
+            if (!core || !btn) return;
+            const nowOff = core.classList.toggle('translations-off');
+            // Update button aria and label
+            btn.setAttribute('aria-pressed', nowOff ? 'false' : 'true');
+            btn.textContent = nowOff ? 'Show Translation' : 'Hide Translation';
+            btn.title = nowOff ? 'Show translations for Core Ruqya verses' : 'Hide translations for Core Ruqya verses';
         }
         
         // Set default theme to dark mode on page load
