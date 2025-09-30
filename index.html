@@ -182,8 +182,9 @@
             background-color: var(--translation-bg);
         }
         
-        /* Hide translations within Core Content when toggle is off */
-        #core-content.translations-off .translation { display: none; }
+        /* Hide translations within Core Content and Targeted sections when toggle is off */
+        #core-content.translations-off .translation,
+        #targeted-sections.translations-off .translation { display: none; }
         
         .reference {
             font-weight: bold;
@@ -212,6 +213,27 @@
             padding: 0.4rem 0.8rem;
             font-size: 0.9rem;
         }
+        
+        /* Icon-only button used for translations toggles */
+        .btn-icon {
+            background: none;
+            color: var(--primary-color);
+            border: none;
+            padding: 0.2rem;
+            margin: 0 0 0 auto; /* push to right in flex header */
+            border-radius: 50%;
+            opacity: 0.6; /* semi-transparent */
+            transition: opacity 0.2s ease, transform 0.1s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-icon:hover { opacity: 0.9; }
+        .btn-icon:active { transform: scale(0.98); }
+        .btn-icon svg { display: block; }
+        
+        /* Ensure header spacing remains tidy */
+        .card-title { gap: 8px; }
         
         .modal {
             display: none;
@@ -621,6 +643,12 @@
                 <div class="translation">And when I am ill, it is He who cures me (Statement of Prophet Ibrahim AS)</div>
                 </div>
             
+            <div class="verse">
+                <div class="reference">Asking Allah for Healing (Recite 7 times)</div>
+                <div class="arabic">أَسْـأَلُ اللهَ العَـظيـم، رَبَّ العَـرْشِ العَـظيـم أَنْ يَشْفِيَكَ (أَنْ يَشْفِيَهَا، أَنْ يَشْفِيَنِي)</div>
+                <div class="translation">"I ask Almighty Allah, Lord of the Magnificent Throne, to make you well."</div>
+            </div>
+            
             <div class="person-selection">
                 <p class="person-title">Press if you are reading Ruqyah on a male, female, or yourself:</p>
                 <div class="person-icons">
@@ -638,7 +666,9 @@
         <div class="card">
             <h2 class="card-title">
                 <span>Core Ruqya Verses</span>
-                <button id="toggle-core-translations" class="btn btn-small" onclick="toggleCoreTranslations()" aria-pressed="false" title="Show translations for Core Ruqya verses" style="margin-left:auto">Show Translation</button>
+                <button id="toggle-core-translations" class="btn btn-icon" onclick="toggleCoreTranslations()" aria-pressed="false" aria-label="Show translations for Core Ruqya verses" title="Show translations for Core Ruqya verses" style="margin-left:auto">
+                    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="12" rx="10" ry="6" stroke="currentColor" fill="none" stroke-width="2"></ellipse><circle cx="12" cy="12" r="3" fill="currentColor"></circle></svg>
+                </button>
             </h2>
             
             <div class="filter-buttons">
@@ -814,14 +844,19 @@
         </div>
         
         <div class="card">
-            <h2 class="card-title">Targeted Ruqya Verses</h2>
+            <h2 class="card-title">
+                <span>Targeted Ruqya Verses</span>
+                <button id="toggle-targeted-translations" class="btn btn-icon" onclick="toggleTargetedTranslations()" aria-pressed="false" aria-label="Show translations for Targeted Ruqya verses" title="Show translations for Targeted Ruqya verses" style="margin-left:auto">
+                    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="12" rx="10" ry="6" stroke="currentColor" fill="none" stroke-width="2"></ellipse><circle cx="12" cy="12" r="3" fill="currentColor"></circle></svg>
+                </button>
+            </h2>
             <p>Select a category to view specific verses for different purposes:</p>
             
             <button class="btn" onclick="toggleSection('targeted-sihr')">For Sihr (Magic)</button>
             <button class="btn" onclick="toggleSection('targeted-healing')">Healing & Protection</button>
             <button class="btn" onclick="toggleSection('targeted-shifa')">Shifa</button>
 
-            <div id="targeted-sections">
+            <div id="targeted-sections" class="translations-off">
                 <!-- Sihr Section -->
                 <div id="targeted-sihr" style="display: none; margin-top: 1rem;">
                     <h3 class="card-title">Verses for Sihr (Magic)</h3>
@@ -1091,8 +1126,20 @@
             const nowOff = core.classList.toggle('translations-off');
             // Update button aria and label
             btn.setAttribute('aria-pressed', nowOff ? 'false' : 'true');
-            btn.textContent = nowOff ? 'Show Translation' : 'Hide Translation';
+            btn.setAttribute('aria-label', nowOff ? 'Show translations for Core Ruqya verses' : 'Hide translations for Core Ruqya verses');
             btn.title = nowOff ? 'Show translations for Core Ruqya verses' : 'Hide translations for Core Ruqya verses';
+        }
+
+        // Toggle Targeted Ruqya translations (default off)
+        function toggleTargetedTranslations() {
+            const targeted = document.getElementById('targeted-sections');
+            const btn = document.getElementById('toggle-targeted-translations');
+            if (!targeted || !btn) return;
+            const nowOff = targeted.classList.toggle('translations-off');
+            // Update button aria and label
+            btn.setAttribute('aria-pressed', nowOff ? 'false' : 'true');
+            btn.setAttribute('aria-label', nowOff ? 'Show translations for Targeted Ruqya verses' : 'Hide translations for Targeted Ruqya verses');
+            btn.title = nowOff ? 'Show translations for Targeted Ruqya verses' : 'Hide translations for Targeted Ruqya verses';
         }
         
         // Set default theme to dark mode on page load
