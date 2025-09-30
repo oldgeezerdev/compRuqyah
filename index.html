@@ -643,12 +643,6 @@
                 <div class="translation">And when I am ill, it is He who cures me (Statement of Prophet Ibrahim AS)</div>
                 </div>
             
-            <div class="verse">
-                <div class="reference">Asking Allah for Healing (Recite 7 times)</div>
-                <div class="arabic">أَسْـأَلُ اللهَ العَـظيـم، رَبَّ العَـرْشِ العَـظيـم أَنْ يَشْفِيَكَ (أَنْ يَشْفِيَهَا، أَنْ يَشْفِيَنِي)</div>
-                <div class="translation">"I ask Almighty Allah, Lord of the Magnificent Throne, to make you well."</div>
-            </div>
-            
             <div class="person-selection">
                 <p class="person-title">Press if you are reading Ruqyah on a male, female, or yourself:</p>
                 <div class="person-icons">
@@ -672,7 +666,7 @@
             </h2>
             
             <div class="filter-buttons">
-                <button class="btn btn-filter active" onclick="filterVerses('all')">All</button>
+                <button class="btn btn-filter active" onclick="filterVerses('all')" style="border: 2px solid #66bb6a;">All</button>
                 <button class="btn btn-filter btn-prophetic" onclick="filterVerses('prophetic')">Prophetic</button>
                 <button class="btn btn-filter btn-manzil" onclick="filterVerses('manzil')">Manzil</button>
             </div>
@@ -1308,18 +1302,28 @@
             if (person === 'him') {
                 arabicText = 'بِاسْمِ اللَّهِ أَرْقِيكَ مِنْ كُلِّ شَىْءٍ يُؤْذِيكَ مِنْ شَرِّ كُلِّ نَفْسٍ أَوْ عَيْنِ حَاسِدٍ اللَّهُ يَشْفِيكَ بِاسْمِ اللَّهِ أَرْقِيكَ';
                 translationText = 'In the name of Allah, I perform Ruqyah on you from everything that harms you, from the evil of every soul or envious eye. May Allah heal you. In the name of Allah, I perform Ruqyah on you.';
+                var duaArabic = 'أَسْـأَلُ اللهَ العَظِيْمَ، رَبَّ العَرْشِ العَظِيْمِ أَنْ يَشْفِيَكَ';
+                var duaTranslation = 'I ask Almighty Allah, Lord of the Magnificent Throne, to make him well.';
             } else if (person === 'her') {
-                arabicText = 'بِاسْمِ اللَّهِ أَرْقِيكِ مِنْ كُلِّ شَىْءٍ يُؤْذِيكِ مِنْ شَرِّ كُلِّ نَفْسٍ أَوْ عَيْنِ حَاسِدٍ اللَّهُ يَشْفِيكِ بِاسْمِ اللَّهِ أَرْقِيكِ';
+                arabicText = 'بِاسْمِ اللَّهِ أَرْقِيكِ مِنْ كُلِّ شَىْءٍ يُؤْذِيكِ مِنْ شَرِّ كُلِّ نَفْسٍ أَوْ عَيْنِ حَاسِدٍ اللَّـهُ يَشْفِيكِ بِاسْمِ اللَّهِ أَرْقِيكِ';
                 translationText = 'In the name of Allah, I perform Ruqyah on you from everything that harms you, from the evil of every soul or envious eye. May Allah heal you. In the name of Allah, I perform Ruqyah on you.';
+                var duaArabic = 'أَسْـأَلُ اللهَ العَظِيْمَ، رَبَّ العَرْشِ العَظِيْمِ أَنْ يَشْفِيكِ';
+                var duaTranslation = 'I ask Almighty Allah, Lord of the Magnificent Throne, to make her well.';
             } else if (person === 'me') {
                 arabicText = 'بِاسْمِ اللَّهِ أَرْقِي نَفْسِي مِنْ كُلِّ شَىْءٍ يُؤْذِينِي مِنْ شَرِّ كُلِّ نَفْسٍ أَوْ عَيْنِ حَاسِدٍ اللَّهُ يَشْفِينِي بِاسْمِ اللَّهِ أَرْقِي نَفْسِي';
                 translationText = 'In the name of Allah, I perform Ruqyah on myself from everything that harms me, from the evil of every soul or envious eye. May Allah heal me. In the name of Allah, I perform Ruqyah on myself.';
+                var duaArabic = 'أَسْـأَلُ اللهَ العَظِيْمَ، رَبَّ العَرْشِ العَظِيْمِ أَنْ يَشْفِينِي';
+                var duaTranslation = 'I ask Almighty Allah, Lord of the Magnificent Throne, to make me well.';
             }
             
             verseContainer.innerHTML = `
                 <div class="verse">
                     <div class="arabic">${arabicText}</div>
                     <div class="translation">${translationText}</div>
+                </div>
+                <div class="verse">
+                    <div class="arabic">${duaArabic}</div>
+                    <div class="translation">${duaTranslation}</div>
                 </div>
             `;
             
