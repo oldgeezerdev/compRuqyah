@@ -555,9 +555,11 @@
             <p class="subtitle">Based on the Qur'an and Authentic Sunnah for Spiritual Healing</p>
         </header>
         <div class="card key-steps">
-            <h2 class="card-title" onclick="toggleKeySteps()" style="cursor: pointer;" aria-label="Click to hide or show Key Steps" title="Click to Hide/Show" aria-expanded="true">Key Steps to Take Before Seeking a Spiritual Cure (Ruqyah)</h2>
+            <h2 class="card-title" onclick="toggleKeySteps()" style="cursor: pointer;" aria-label="Click to hide or show Key Steps" title="Click to Hide/Show" aria-expanded="true">Key Steps to Take Before Seeking a Spiritual Cure (Ruqyah)
+                 <button type="button" id="toggle-key-steps-btn" onclick="event.stopPropagation(); toggleKeySteps()" style="margin-left: 8px; width: 26px; height: 26px; border: 1px solid #66bb6a; background: transparent; color: inherit; font-size: 9px; line-height: 24px; padding: 0; border-radius: 4px;">Hide</button>
+             </h2>
             <div class="key-steps-body">
-            <p class="quote">"And when My servants ask you concerning Me, indeed I am near. I respond to the call of the caller when he calls upon Me." (Surah Al-Baqarah, 2:186)</p>
+            <p class="quote"><span class="arabic">وَإِذَا سَأَلَكَ عِبَادِى عَنِّي فَإِنِّي قَرِيبٌ ۖ أُجِيبُ دَعْوَةَ ٱلدَّاعِ إِذَا دَعَانِ ۖ فَلْيَسْتَجِيبُوا۟ لِي وَلْيُؤْمِنُوا۟ بِي لَعَلَّهُمْ يَرْشُدُونَ ١٨٦</span><br><span class="translation">When My servants ask thee concerning Me, I am indeed close (to them): I listen to the prayer of every suppliant when he calleth on Me: Let them also, with a will, Listen to My call, and believe in Me: That they may walk in the right way.</span></p>
             <p>&nbsp;</p>
             <h3>Correct Your Core Beliefs</h3>
             <ul>
@@ -1100,6 +1102,12 @@
             body.style.display = isHidden ? '' : 'none';
             card.classList.toggle('collapsed', !isHidden);
             title.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+            const btn = document.getElementById('toggle-key-steps-btn');
+            if (btn) {
+                const nowHidden = body.style.display === 'none';
+                btn.textContent = nowHidden ? 'Show' : 'Hide';
+                btn.setAttribute('aria-label', nowHidden ? 'Show Key Steps' : 'Hide Key Steps');
+            }
         }
         
         // Theme toggle functionality
