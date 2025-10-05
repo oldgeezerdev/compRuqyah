@@ -878,7 +878,7 @@
             </div>
         </div>
         
-        <div class="card">
+        <div id="targeted-card" class="card" style="display: none;">
             <h2 class="card-title">
                 <span>Targeted Ruqya Verses for use with Prophetic Verses</span>
                 <button id="toggle-targeted-translations" class="btn btn-icon" onclick="toggleTargetedTranslations()" aria-pressed="false" aria-label="Show translations for Targeted Ruqya verses" title="Show translations for Targeted Ruqya verses" style="margin-left:auto">
@@ -1187,6 +1187,9 @@
             const targeted = document.getElementById('targeted-sections');
             const btn = document.getElementById('toggle-targeted-translations');
             if (!targeted || !btn) return;
+            // If the card is hidden, do nothing
+            const card = document.getElementById('targeted-card');
+            if (card && card.style.display === 'none') return;
             const nowOff = targeted.classList.toggle('translations-off');
             // Update button aria and label
             btn.setAttribute('aria-pressed', nowOff ? 'false' : 'true');
@@ -1212,6 +1215,7 @@
             const verses = document.querySelectorAll('.verse[data-tags]');
             const filterButtons = document.querySelectorAll('.btn-filter');
             const clickedButton = event.target;
+            const targetedCard = document.getElementById('targeted-card');
             
             console.log('Total verses with data-tags found:', verses.length);
             
@@ -1234,6 +1238,8 @@
                 clickedButton.classList.remove('active');
                 // Reset verse right-border color
                 document.body.classList.remove('filter-prophetic', 'filter-manzil');
+                // Hide Targeted card when toggling off
+                if (targetedCard) targetedCard.style.display = 'none';
                 console.log('Toggled off - All verses hidden');
                 filterInitialized = false; // Reset initialization flag
                 return;
@@ -1255,8 +1261,14 @@
             document.body.classList.remove('filter-prophetic', 'filter-manzil');
             if (filter === 'prophetic') {
                 document.body.classList.add('filter-prophetic');
+                // Show Targeted card only for Prophetic
+                if (targetedCard) targetedCard.style.display = '';
             } else if (filter === 'manzil') {
                 document.body.classList.add('filter-manzil');
+                if (targetedCard) targetedCard.style.display = 'none';
+            } else {
+                // For 'all' or any other, hide Targeted card
+                if (targetedCard) targetedCard.style.display = 'none';
             }
 
             verses.forEach(verse => {
