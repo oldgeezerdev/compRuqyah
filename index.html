@@ -497,6 +497,30 @@
         .filter-buttons {
             margin: 1rem 0;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .filter-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 680px;
+        }
+        .filter-item .btn-filter {
+            width: 220px;
+            max-width: 100%;
+        }
+        .filter-description {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: var(--text-color);
+            opacity: 0.9;
+            margin-top: 0.35rem;
+            padding: 0 0.5rem;
+            text-align: left;
         }
         
         .btn-filter {
@@ -556,11 +580,9 @@
         </header>
         <div class="card key-steps">
             <h2 class="card-title" onclick="toggleKeySteps()" style="cursor: pointer;" aria-label="Click to hide or show Key Steps" title="Click to Hide/Show" aria-expanded="true">Key Steps to Take Before Seeking a Spiritual Cure (Ruqyah)
-                 <button type="button" id="toggle-key-steps-btn" onclick="event.stopPropagation(); toggleKeySteps()" style="margin-left: 8px; width: 26px; height: 26px; border: 1px solid #66bb6a; background: transparent; color: inherit; font-size: 9px; line-height: 24px; padding: 0; border-radius: 4px;">Hide</button>
+                 <button type="button" id="toggle-key-steps-btn" onclick="event.stopPropagation(); toggleKeySteps()" style="margin-left: 8px; width: 26px; height: 26px; border: 1px solid #ffffff; background: transparent; color: #ffffff; font-size: 9px; line-height: 24px; padding: 0; border-radius: 4px;">Hide</button>
              </h2>
             <div class="key-steps-body">
-            <p class="quote"><span class="arabic">وَإِذَا سَأَلَكَ عِبَادِى عَنِّي فَإِنِّي قَرِيبٌ ۖ أُجِيبُ دَعْوَةَ ٱلدَّاعِ إِذَا دَعَانِ ۖ فَلْيَسْتَجِيبُوا۟ لِي وَلْيُؤْمِنُوا۟ بِي لَعَلَّهُمْ يَرْشُدُونَ ١٨٦</span><br><span class="translation">When My servants ask thee concerning Me, I am indeed close (to them): I listen to the prayer of every suppliant when he calleth on Me: Let them also, with a will, Listen to My call, and believe in Me: That they may walk in the right way.</span></p>
-            <p>&nbsp;</p>
             <h3>Correct Your Core Beliefs</h3>
             <ul>
                 <li>Focus on a correct and sincere belief in Allah (swt).</li>
@@ -620,15 +642,20 @@
             <h2 class="card-title">Opening Adhkar & Supplications</h2>
             
             <div class="verse">
+                <div class="arabic">أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ</div>
+                <div class="translation">I seek refuge in Allah from the accursed Satan</div>
+            </div>
+
+
+
+
+            <div class="verse">
                     <div class="reference">Surah Ash-Shu'ara (26:80)</div>
                     <div class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
                     <div class="translation">In the name of Allah, the Most Gracious, the Most Merciful</div>
             </div>
             
-            <div class="verse">
-                <div class="arabic">أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ</div>
-                <div class="translation">I seek refuge in Allah from the accursed Satan</div>
-            </div>
+            
             
             <div class="verse">
                 <div class="arabic">أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ</div>
@@ -668,9 +695,18 @@
             </h2>
             
             <div class="filter-buttons">
-                <button class="btn btn-filter active" onclick="filterVerses('all')" style="border: 2px solid #66bb6a;">All</button>
-                <button class="btn btn-filter btn-prophetic" onclick="filterVerses('prophetic')">Prophetic</button>
-                <button class="btn btn-filter btn-manzil" onclick="filterVerses('manzil')">Manzil</button>
+                <div class="filter-item">
+                    <button class="btn btn-filter btn-prophetic" onclick="filterVerses('prophetic')">Prophetic</button>
+                    <div class="filter-description">Shows only the verses and supplications specifically used by Prophet Muhammad (ﷺ) for Ruqyah, following his exact practice and methodology. Start with this ruqyah and notice any reactions especially negative thoughts or physical reaction.</div>
+                </div>
+                <div class="filter-item">
+                    <button class="btn btn-filter btn-manzil" onclick="filterVerses('manzil')">Manzil</button>
+                    <div class="filter-description">Shows the traditional Manzil compilation - a specific set of Quranic verses historically recognized for powerful protection against black magic, evil eye, and spiritual harm. This is a proven set of verses that is very effective for ruqyah.</div>
+                </div>
+                <div class="filter-item">
+                    <button class="btn btn-filter active" onclick="filterVerses('all')" style="border: 2px solid #66bb6a;">All</button>
+                    <div class="filter-description">Shows a comprehensive collection of verses used for Ruqyah compiled from authentic Islamic sources for spiritual protection and healing. Use for longer ruqyah session (yes the more you read the more effective)</div>
+                </div>
             </div>
             
             <div id="core-content" class="translations-off">
