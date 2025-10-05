@@ -554,6 +554,9 @@
         .btn-filter.active.btn-prophetic { border-color: var(--prophetic-color); }
         .btn-filter.active.btn-manzil { border-color: var(--manzil-color); }
 
+        /* Match targeted buttons’ border to Prophetic blue */
+        .targeted-buttons .btn-filter { border-color: var(--prophetic-color); }
+
         /* Change the right-side line on verses based on active filter */
         body.filter-prophetic #core-content .verse { border-right-color: var(--prophetic-color); }
         body.filter-manzil #core-content .verse { border-right-color: var(--manzil-color); }
@@ -705,7 +708,7 @@
                 </div>
                 <div class="filter-item">
                     <button class="btn btn-filter active" onclick="filterVerses('all')" style="border: 2px solid #66bb6a;">All</button>
-                    <div class="filter-description">Shows a comprehensive collection of verses used for Ruqyah compiled from authentic Islamic sources for spiritual protection and healing. Use for longer ruqyah session (yes the more you read the more effective)</div>
+                    <div class="filter-description">Shows a comprehensive collection of verses used for Ruqyah compiled from authentic Islamic sources for spiritual protection and healing. Use for longer ruqyah session (yes the more you read the more effective).<br><br>When reciting ruqya notice any reactions especially negative thoughts or physical reactions.</div>
                 </div>
             </div>
             
@@ -877,16 +880,27 @@
         
         <div class="card">
             <h2 class="card-title">
-                <span>Targeted Ruqya Verses</span>
+                <span>Targeted Ruqya Verses for use with Prophetic Verses</span>
                 <button id="toggle-targeted-translations" class="btn btn-icon" onclick="toggleTargetedTranslations()" aria-pressed="false" aria-label="Show translations for Targeted Ruqya verses" title="Show translations for Targeted Ruqya verses" style="margin-left:auto">
                     <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="12" rx="10" ry="6" stroke="currentColor" fill="none" stroke-width="2"></ellipse><circle cx="12" cy="12" r="3" fill="currentColor"></circle></svg>
                 </button>
             </h2>
-            <p>Select a category to view specific verses for different purposes:</p>
+            <p>Select a category to view specific verses for different purposes after reciting the Prophetic ruqyah:</p>
             
-            <button class="btn" onclick="toggleSection('targeted-sihr')">For Sihr (Magic)</button>
-            <button class="btn" onclick="toggleSection('targeted-healing')">Healing & Protection</button>
-            <button class="btn" onclick="toggleSection('targeted-shifa')">Shifa</button>
+            <div class="filter-buttons targeted-buttons">
+                <div class="filter-item">
+                    <button class="btn btn-filter" onclick="toggleSection('targeted-sihr')">For Sihr (Magic)</button>
+                    <div class="filter-description">For magic/spiritual attacks</div>
+                </div>
+                <div class="filter-item">
+                    <button class="btn btn-filter" onclick="toggleSection('targeted-healing')">Healing & Protection</button>
+                    <div class="filter-description">Healing & Protection - For spiritual shields/prevention</div>
+                </div>
+                <div class="filter-item">
+                    <button class="btn btn-filter" onclick="toggleSection('targeted-shifa')">Shifa</button>
+                    <div class="filter-description">For physical sickness and bodily ailments</div>
+                </div>
+            </div>
 
             <div id="targeted-sections" class="translations-off">
                 <!-- Sihr Section -->
