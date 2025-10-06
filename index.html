@@ -569,6 +569,28 @@
             line-height: 1.5;
         }
 
+        /* Raaqi Advisory tweaks: hide arrows and contain expanded content */
+        #raaqi-advisory-box { text-align: left; }
+        #raaqi-advisory-box h3 { text-align: left; }
+        #raaqi-advisory-box summary { list-style: none; cursor: pointer; color: #1e90ff; text-decoration: underline; }
+        #raaqi-advisory-box summary::-webkit-details-marker { display: none; }
+        #raaqi-advisory-box summary::marker { content: ''; }
+        #raaqi-advisory-box .advisory-content {
+            background: rgba(46, 139, 87, 0.15);
+            padding: 0.6rem;
+            border-radius: 6px;
+            margin-top: 0.4rem;
+            border-left: 3px solid var(--secondary-color);
+        }
+        #raaqi-advisory-box .advisory-hint { font-size: 0.9rem; opacity: 0.8; margin-bottom: 0.4rem; }
+        #raaqi-advisory-box .advisory-row { display: grid; grid-template-columns: minmax(90px, 140px) 1fr; column-gap: 0.8rem; row-gap: 0.3rem; align-items: start; }
+        #raaqi-advisory-box .advisory-label { font-weight: 700; }
+        #raaqi-advisory-box .advisory-text { display: block; }
+        #raaqi-advisory-box .advisory-text--justify { text-align: justify; }
+        #raaqi-advisory-box .advisory-text--center { text-align: center; }
+        #raaqi-advisory-box .advisory-row--danger { border-left: 3px solid #c62828; padding-left: 0.5rem; }
+        #raaqi-advisory-box .advisory-label--danger { color: #c62828; }
+
         /* Match targeted buttons’ border to Prophetic blue */
         .targeted-buttons .btn-filter { border-color: var(--prophetic-color); }
 
@@ -732,9 +754,132 @@
                         <p>I personally began with the Manzil verses, and by the grace of Allah (SWT), after a few days of consistent recitation, I experienced a clear reaction — a tingling sensation that started in my legs and rose to my head, as though something was leaving my body. When the sensation subsided, I felt lighter, happier, and, Alhamdulillah, the symptoms of the affliction disappeared. Since then, I have continued with the ruqyah regularly to maintain protection from any future spiritual harm.</p>
                     </div>
                     <div id="raaqi-advisory-box" class="testimony-box" role="region" aria-label="Raaqi Advisory">
-                        <p>You may wish to consult a reputable raaqi — someone qualified to perform ruqyah on you. Genuine, knowledgeable raaqis can be difficult to find but are worth the effort. Unfortunately, many who claim to be raaqis are either ineffective or, at times, involved in questionable practices such as using taweez, written charms, or rituals that have no basis in the Sunnah. They may appear to help your current affliction but can leave you with further problems, keeping you dependent on them.</p>
+                        <h3>How to Spot a Genuine Raqi (and Avoid a False One)</h3>
+                        <p>A guide to distinguishing authentic Islamic spiritual healing from practices that involve shirk or deception. <span class="advisory-hint">Click an item to view details.</span></p>
 
-                        <p>If a raaqi asks for your date of birth or your mother’s name, or instructs you to wear or hang any inscription, perform rituals, or use objects for “protection,” do not follow such instructions. Conclude the session politely, avoid further association, and continue with authentic ruqyah based on the Qur’an and Sunnah.</p>
+                        <details>
+                            <summary>Recitation</summary>
+                            <div class="advisory-content">
+                                <div class="advisory-row">
+                                    <span class="advisory-label">Genuine</span>
+                                    <span class="advisory-text">Recites only authentic Qur'anic verses and prophetic duʿas, clearly and correctly in Arabic. May explain the meanings to help the patient understand what is being read.</span>
+                                </div>
+                                <div class="advisory-row advisory-row--danger">
+                                    <span class="advisory-label advisory-label--danger">False</span>
+                                    <span class="advisory-text">Mumbles in an unknown language, mixes foreign or "mystical" words, or uses chants that are not from Qur'an or Sunnah. Sometimes uses "secret names" of jinn or angels, coded syllables, or meaningless sounds to hide shirk.</span>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Interaction with Female Patients</summary>
+                            <div class="advisory-content">
+                                <div class="advisory-row">
+                                    <span class="advisory-label">Genuine</span>
+                                    <span class="advisory-text">Respects Islamic guidelines — does not touch or physically interact with non-mahram women. Keeps a professional and modest distance.</span>
+                                </div>
+                                <div class="advisory-row advisory-row--danger">
+                                    <span class="advisory-label advisory-label--danger">False</span>
+                                    <span class="advisory-text">Suggests touching a woman as part of "treatment" — even if he appears to be an old sheikh with a white beard and a calm, holy demeanour. This is a major red flag. Such men exploit women at their most vulnerable. Do not confront this snake — just leave. In some cases, touching is used as a cover for sexual abuse or transferring sihr/jinn contact.</span>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Knowledge of the Unseen</summary>
+                            <div class="advisory-content">
+                                <div class="advisory-row">
+                                    <span class="advisory-label">Genuine</span>
+                                    <span class="advisory-text">Never claims to know the unseen, the future, or hidden personal matters. Makes assessments only from what is visible or what the patient shares.</span>
+                                </div>
+                                <div class="advisory-row advisory-row--danger">
+                                    <span class="advisory-label advisory-label--danger">False</span>
+                                    <span class="advisory-text">Claims special knowledge — predicting the future, telling you hidden details about your life, or describing events they could not naturally know. This is usually through communication with jinn, who pass information in exchange for acts of shirk and filth. These can include desecrating the Qur'an, engaging in immoral acts, or performing rituals for the jinn's benefit.</span>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Items Requested</summary>
+                            <div class="advisory-content">
+                                <div class="advisory-row">
+                                    <span class="advisory-label">Genuine</span>
+                                    <span class="advisory-text">May ask for simple, reasonable items such as water, olive oil, or honey for ruqyah.</span>
+                                </div>
+                                <div class="advisory-row advisory-row--danger">
+                                    <span class="advisory-label advisory-label--danger">False</span>
+                                    <span class="advisory-text">Requests strange or impossible items — such as a black bird, three-legged goat, or rare herbs with no Islamic basis. Asks for personal items you've worn or touched, especially intimate clothing (e.g., underwear) or hair/nails. This is a well-known magician tactic, often used to create or strengthen sihr against the victim.</span>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Approach to Healing</summary>
+                            <div class="advisory-content">
+                                <div class="advisory-row">
+                                    <span class="advisory-label">Genuine</span>
+                                    <span class="advisory-text">Encourages tawakkul (reliance on Allah), patience, and combining ruqyah with medical treatment when needed. Advises self-ruqyah so the patient learns to protect themselves.</span>
+                                </div>
+                                <div class="advisory-row advisory-row--danger">
+                                    <span class="advisory-label advisory-label--danger">False</span>
+                                    <span class="advisory-text">Makes you dependent on him, discourages self-ruqyah, and claims only he can "cure" you. Sometimes sets up long, expensive "treatment packages" with no end date.</span>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Amulets and Charms</summary>
+                            <div class="advisory-content">
+                                <div class="advisory-row">
+                                    <span class="advisory-label">Genuine</span>
+                                    <span class="advisory-text">Never gives taweez, amulets, or charms to wear, burn, bury, or hang. Teaches that healing comes through Allah's words, not objects.</span>
+                                </div>
+                                <div class="advisory-row advisory-row--danger">
+                                    <span class="advisory-label advisory-label--danger">False</span>
+                                    <span class="advisory-text">Gives such items and claims they will protect or heal you. Often these contain squares, numbers, and symbols with no meaning in Arabic; names of unknown "spirits" or "angels" (often jinn); verses of Qur'an written backwards or mixed with strange symbols; knots, threads, powders, or animal parts used in occult rituals; and instructions to burn, bury, dissolve in water and drink, or hang at certain locations. Such practices are forbidden and often involve cooperation with jinn. A genuine raqi will tell you to destroy these items safely (e.g., by soaking in water until the ink fades, then disposing respectfully).</span>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Behaviour and Environment</summary>
+                            <div class="advisory-content">
+                                <div class="advisory-row">
+                                    <span class="advisory-label">Genuine</span>
+                                    <span class="advisory-text">Is humble, patient, and works openly. Keeps treatment in a safe, well-lit, and non-isolated setting.</span>
+                                </div>
+                                <div class="advisory-row advisory-row--danger">
+                                    <span class="advisory-label advisory-label--danger">False</span>
+                                    <span class="advisory-text">Boasts of "special powers" or unique status. Orders the patient to isolate for days, remain in darkness, or avoid all human contact without Islamic proof. Such isolation is often a way to break the patient's mental resilience and make them more suggestible.</span>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Superstitious Practices</summary>
+                            <div class="advisory-content">
+                                <div class="advisory-row">
+                                    <span class="advisory-label">Genuine</span>
+                                    <span class="advisory-text">Bases all actions on Qur'an and Sunnah, avoiding superstition.</span>
+                                </div>
+                                <div class="advisory-row advisory-row--danger">
+                                    <span class="advisory-label advisory-label--danger">False</span>
+                                    <span class="advisory-text">Matches your name (and sometimes your mother's name) with elements like earth, wind, water, or fire — a practice from occult numerology, not Islam. May also tell you your "star sign" or birth month affects your treatment.</span>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details open>
+                            <summary>Important Note</summary>
+                            <div class="advisory-content">
+                                <div class="advisory-row" style="grid-template-columns: 1fr;">
+                                    <span class="advisory-text advisory-text--justify">A genuine raqi will always emphasize the importance of faith in Allah alone, adherence to Islamic principles, and seeking proper medical treatment when necessary. If you encounter any of the "false" practices described above, distance yourself immediately and seek guidance from knowledgeable, trustworthy scholars.</span>
+                                </div>
+                                <div class="advisory-row" style="grid-template-columns: 1fr;">
+                                    <span class="advisory-text advisory-text--center"><strong>All ruqyah treatment MUST BE based on Quran and Sunnah.</strong></span>
+                                </div>
+                            </div>
+                        </details>
                     </div>
                 </div>
                 </div>
