@@ -724,9 +724,17 @@
                 <div class="filter-item">
                     <button class="btn btn-filter active" onclick="filterVerses('all')" style="border: 2px solid #66bb6a;">All</button>
                     <div class="filter-description">Shows a comprehensive collection of verses used for Ruqyah compiled from authentic Islamic sources for spiritual protection and healing. Use for longer ruqyah sessions (the more you read, the more effective).<br><br>When reciting ruqyah, note any reactions—especially intrusive negative thoughts or physical sensations. If you experience reactions, continue reciting and repeat as needed. If reactions occur to the Prophetic verses, begin using the Manzil verses (which include the Prophetic verses and more) at least once daily.</div>
-                    <button id="user-testimony-btn" class="btn btn-small btn-rounded" aria-expanded="false" aria-controls="user-testimony-box" onclick="toggleTestimony()" style="margin-top:0.3rem">User Testimony</button>
+                    <div class="experience-actions" style="display:flex; gap:0.4rem; align-items:center; flex-wrap:wrap; margin-top:0.3rem">
+                        <button id="user-testimony-btn" class="btn btn-small btn-rounded" aria-expanded="false" aria-controls="user-testimony-box" onclick="toggleTestimony()" style="margin:0">User Experience</button>
+                        <button id="raaqi-advisory-btn" class="btn btn-small btn-rounded" aria-expanded="false" aria-controls="raaqi-advisory-box" onclick="toggleRaaqiAdvisory()" style="margin:0">Finding a Raaqi</button>
+                    </div>
                     <div id="user-testimony-box" class="testimony-box" role="region" aria-label="User Experience">
                         <p>I personally began with the Manzil verses, and by the grace of Allah (SWT), after a few days of consistent recitation, I experienced a clear reaction — a tingling sensation that started in my legs and rose to my head, as though something was leaving my body. When the sensation subsided, I felt lighter, happier, and, Alhamdulillah, the symptoms of the affliction disappeared. Since then, I have continued with the ruqyah regularly to maintain protection from any future spiritual harm.</p>
+                    </div>
+                    <div id="raaqi-advisory-box" class="testimony-box" role="region" aria-label="Raaqi Advisory">
+                        <p>You may wish to consult a reputable raaqi — someone qualified to perform ruqyah on you. Genuine, knowledgeable raaqis can be difficult to find but are worth the effort. Unfortunately, many who claim to be raaqis are either ineffective or, at times, involved in questionable practices such as using taweez, written charms, or rituals that have no basis in the Sunnah. They may appear to help your current affliction but can leave you with further problems, keeping you dependent on them.</p>
+
+                        <p>If a raaqi asks for your date of birth or your mother’s name, or instructs you to wear or hang any inscription, perform rituals, or use objects for “protection,” do not follow such instructions. Conclude the session politely, avoid further association, and continue with authentic ruqyah based on the Qur’an and Sunnah.</p>
                     </div>
                 </div>
                 </div>
@@ -1223,9 +1231,21 @@
             const btn = document.getElementById('user-testimony-btn');
             if (!box || !btn) return;
             const isHidden = box.style.display === '' || box.style.display === 'none';
-            box.style.display = isHidden ? 'block' : 'none';
+            const newDisplay = isHidden ? 'block' : 'none';
+            box.style.display = newDisplay;
             btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
-            btn.textContent = isHidden ? 'Hide Testimony' : 'User Testimony';
+            btn.textContent = isHidden ? 'Hide Experience' : 'User Experience';
+        }
+
+        function toggleRaaqiAdvisory() {
+            const box = document.getElementById('raaqi-advisory-box');
+            const btn = document.getElementById('raaqi-advisory-btn');
+            if (!box || !btn) return;
+            const isHidden = box.style.display === '' || box.style.display === 'none';
+            const newDisplay = isHidden ? 'block' : 'none';
+            box.style.display = newDisplay;
+            btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+            btn.textContent = isHidden ? 'Hide Advisory' : 'Finding a Raaqi';
         }
         
         // Set default theme to dark mode on page load
